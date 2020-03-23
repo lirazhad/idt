@@ -1,12 +1,13 @@
 import React from 'react'
-import { View, SafeAreaView, StyleSheet } from 'react-native'
+import { View, SafeAreaView, StyleSheet, ActivityIndicator } from 'react-native'
 import { StateList } from '../components/state-list'
 import { StateInfo } from '../components/state-info'
 import { SearchHeader } from '../components/search-header'
 import { COLOR } from '../constant'
-import { inject } from "mobx-react"
+import { inject, observer } from 'mobx-react'
 
 @inject('store')
+@observer
 export class MainScreen extends React.Component {
 
     render(){
@@ -40,6 +41,10 @@ export class MainScreen extends React.Component {
                     <StateInfo/>
                     </View>
                 </View>
+                {store.activityIndecator &&  <View style={styles.indecatorStyle}>
+                   <ActivityIndicator size="large" color={COLOR.LIGHT_RED} />
+                </View>}
+               
              </SafeAreaView> 
           )
     }
@@ -75,5 +80,10 @@ const styles = StyleSheet.create({
         height: 1,
         alignSelf: 'center',
         backgroundColor: COLOR.DARK_BLUE
+    },
+    indecatorStyle: {
+        width:'100%',
+        position: 'absolute', 
+        top: 150
     }
   })

@@ -12,6 +12,8 @@ filteredStates = observable([])
 @observable stateCounties = ''
 // search header
 @observable  searchHeaderTextInput
+//activity indecator
+@observable  activityIndecator = false
 // actions
     @action onChangeFilterTerm = (text) => {     
        let filter = (this.states).filter((stateObj) =>{
@@ -35,20 +37,23 @@ filteredStates = observable([])
 
     @action
     async fetchData() {
+        this.activityIndecator = true
         let data = await getStates()
         if(data !== 'error'){
             this.states.replace(data)
             this.filteredStates.replace(data)
         }
+        this.activityIndecator = false
     }
 
      @action
      onStatePress = async (stateDetailUrl) => {
-
+        this.activityIndecator = true
         let data = await getStateDetail(stateDetailUrl)
         if(data !== 'error'){
             this.currentStateDetail.replace(data)
         }
+        this.activityIndecator = false
      }
 }
 
