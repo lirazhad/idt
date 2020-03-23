@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView} from 'react-native'
 import DoubleClick  from 'react-native-double-tap'
-import { SCREEN_WIDTH } from '../constant'
+import { SCREEN_WIDTH, COLOR } from '../constant'
 import { observer } from "mobx-react"
 
 @observer
@@ -9,18 +9,16 @@ export class StateItem extends React.Component {
 
     constructor(props){
         super(props)
-
         this.state={
             selected: false
         }
     }
 
     render(){
-
         const { stateItem, onStatePress, setStateName } = this.props
                 return(
                     <View style={styles.container}>
-                       <View style={[styles.item, {backgroundColor: this.state.selected? 'red': 'transparent'}]}>
+                       <View style={[styles.item, {backgroundColor: this.state.selected? COLOR.DARK_BLUE: 'transparent'}]}>
                         <ScrollView horizontal >
                             <DoubleClick 
                             singleTap={()=>{
@@ -51,6 +49,7 @@ const styles = StyleSheet.create({
     item: {
         borderWidth: 1,
         borderRadius: 4,
+        borderColor: COLOR.LIGHT_BLUE,
         width: '100%',
         padding: 4
     },
@@ -61,5 +60,6 @@ const styles = StyleSheet.create({
     },
     textStyle: {
        fontSize: 16,
+       color: COLOR.LIGHT_BLUE
     }
   })

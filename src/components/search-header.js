@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
-import { SEARCH_HEADER } from '../constant'
+import { SEARCH_HEADER, COLOR } from '../constant'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { observer } from "mobx-react"
 
@@ -12,7 +12,7 @@ export class  SearchHeader extends React.Component{
     return(
   <View style={styles.container}>
      <View style={styles.icon}>
-     <Icon name="search" size={SEARCH_HEADER.ICON_SIZE}/>
+     <Icon name="search" size={SEARCH_HEADER.ICON_SIZE} color={COLOR.DARK_BLUE}/>
      </View>
     <TextInput
         placeholder={'Search'}
@@ -31,9 +31,10 @@ const styles = StyleSheet.create({
     height: SEARCH_HEADER.HEADER_HEIGHT,
     flexDirection: 'row',
     justifyContent: 'center',
+    borderColor: COLOR.DARK_BLUE,
     borderWidth: SEARCH_HEADER.BORDER_WIDTH,
     borderRadius: SEARCH_HEADER.BORDER_RADIUS,
-    margin: SEARCH_HEADER.STANDART_MARGIN,
+    margin: SEARCH_HEADER.STANDART_MARGIN
   },
   inputStyle: {
     flex: 5,

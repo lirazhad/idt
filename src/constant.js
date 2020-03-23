@@ -23,3 +23,10 @@ export const SEARCH_HEADER = {
   ICON_SIZE: 20
 }
 
+export const COLOR = {
+  LIGHT_RED: '#BF343F', 
+  LIGHT_BLUE: '#84B8D9', 
+  DARK_BLUE: '#113740', 
+  DARK_RED: '#A62D2D', 
+  OFF_WHITE: '#F2F2F2'
+}

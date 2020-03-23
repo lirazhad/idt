@@ -1,6 +1,5 @@
-import { observable, action, reaction, computed } from 'mobx'
+import { observable, action } from 'mobx'
 import { getStates, getStateDetail } from '../api/data'
-import * as axios from 'axios';
 
 export class Store {
 // states
@@ -13,15 +12,11 @@ filteredStates = observable([])
 @observable stateCounties = ''
 // search header
 @observable  searchHeaderTextInput
-
-
-
-    @action onChangeFilterTerm = (text) => {
-        
+// actions
+    @action onChangeFilterTerm = (text) => {     
        let filter = (this.states).filter((stateObj) =>{
            return stateObj.state.toLowerCase().includes(text.toLowerCase())
-        })
-        
+        })     
         this.filteredStates.replace(filter)
     }
     
@@ -37,7 +32,6 @@ filteredStates = observable([])
         this.statePopulation = stateItem.population
         this.stateCounties =  stateItem.counties
     }
-
 
     @action
     async fetchData() {
@@ -55,11 +49,6 @@ filteredStates = observable([])
         if(data !== 'error'){
             this.currentStateDetail.replace(data)
         }
-        
-
-    //    let tempArry = await axios.get(stateDetailUrl)
-    //    this.currentStateDetail = []
-    //    this.currentStateDetail = [...tempArry.data['data']]
      }
 }
 

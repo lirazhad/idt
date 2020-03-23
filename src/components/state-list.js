@@ -7,7 +7,7 @@ import { observer } from "mobx-react"
 export class StateList extends React.Component {
    
     render(){
-        const { onStatePress, data, setStateName, filter } = this.props
+        const { onStatePress, data, setStateName } = this.props
 
         return(
         <FlatList
