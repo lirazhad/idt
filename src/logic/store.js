@@ -42,8 +42,12 @@ filteredStates = observable([])
         if(data !== 'error'){
             this.states.replace(data)
             this.filteredStates.replace(data)
+            this.activityIndecator = false
+        }else{
+            setTimeout(() => {
+                this.fetchData()
+            }, 1500);
         }
-        this.activityIndecator = false
     }
 
      @action
